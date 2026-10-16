@@ -1,0 +1,10 @@
+Technical report source notes:
+- Scope: standalone educational 2-D Gymnasium point-mass prototype.
+- Executed demo: seed 7, 807 steps, success, 1.875 m/s wind at 323 degrees,
+  initial mass 2.0 kg, and final mass 1.2 kg.
+- Verified environment: Python 3.11.5 and Gymnasium 1.4.0. The official
+  checker passed and all 11 automated tests passed.
+- Output includes an animated GIF, trajectory, mass and error figures, and
+  numerical CSV. MP4 was not produced because FFmpeg was unavailable.
+- No PPO training or PID/PPO comparison was performed in this package.
+- The technical report reads measured values from simulation_results.csv.

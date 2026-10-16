@@ -1,0 +1,136 @@
+ME5418 AERIAL SPRAYING GYMNASIUM PROTOTYPE - USER GUIDE
+======================================================
+
+1. PROJECT OVERVIEW
+-------------------
+This educational project demonstrates a quadrotor-like point moving in a
+20 m by 20 m agricultural field. It follows a lawnmower route while wind
+disturbs its horizontal motion and liquid payload decreases continuously.
+It is a simplified 2-D point-mass environment, not a full 3-D quadrotor.
+The included controller is PD-style waypoint tracking, not PPO.
+
+2. SOFTWARE REQUIREMENTS
+------------------------
+Tested Python version: Python 3.11.5.
+Required libraries: Gymnasium, NumPy, Matplotlib, Pillow, and pytest.
+Pandas is not required because Python's csv module writes result tables.
+Optional: FFmpeg for MP4 video. GIF generation does not require FFmpeg.
+
+3. ENVIRONMENT INSTALLATION
+---------------------------
+Linux/macOS commands, run from this project folder:
+
+    python3 -m venv .venv
+    source .venv/bin/activate
+    python -m pip install -r requirements.txt
+    python verify_environment.py
+
+Windows activation command:
+
+    .venv\Scripts\activate
+
+Successful verification ends with "Environment verification: PASS".
+
+4. RUNNING THE SIMULATION AND GRAPHICAL DEMO
+--------------------------------------------
+Run the reproducible default case:
+
+    source .venv/bin/activate
+    python spraying_env.py --seed 7 --output outputs
+
+Open outputs/flight_demo.gif in a browser or image viewer. The animation
+shows the field, blue reference path, orange actual path, black drone,
+magenta target, teal wind arrow, time, wind, payload, total mass, error,
+and mission status. If FFmpeg is available, flight_demo.mp4 is also saved.
+
+5. CHANGING WIND, PAYLOAD, AND SPRAY RATE
+-----------------------------------------
+Set the maximum uniformly sampled wind speed:
+
+    python spraying_env.py --wind-max 2.0
+
+Fix the world-frame wind direction in degrees (0 is +x, 90 is +y):
+
+    python spraying_env.py --wind-max 3.0 --wind-angle-deg 45
+
+Set initial liquid payload and spray rate in kg and kg/s:
+
+    python spraying_env.py --initial-payload 1.0 --spray-rate 0.01
+
+Use --wind-max 0 and --spray-rate 0 for nominal fixed-mass operation.
+
+6. CHANGING THE TRAJECTORY
+--------------------------
+Edit SprayingEnv._make_path() in spraying_env.py. Each tuple is an (x, y)
+waypoint in metres. Keep points inside 0 to 20 m. The default has endpoints
+at x=1 and x=19 on y=2, 6, 10, 14, and 18 m, alternating direction.
+
+7. SAVING AND INTERPRETING RESULTS
+----------------------------------
+Use --output to select an output directory:
+
+    python spraying_env.py --seed 7 --output outputs/run_seed_7
+
+Files produced:
+  flight_demo.gif       continuously updating graphical demonstration
+  flight_demo.mp4       optional video when FFmpeg is installed
+  trajectory.png        reference and actual path comparison
+  mass_curve.png        total mass against simulation time
+  tracking_error.png    distance to the active waypoint against time
+  simulation_results.csv numerical histories for independent analysis
+
+The error curve jumps when a waypoint is reached because the target changes
+to the next waypoint. It is active-waypoint distance, not perpendicular
+cross-track error. The mass curve decreases linearly until dry mass, then
+remains constant. A successful trajectory ends within 0.38 m of waypoint 10.
+
+8. GYMNASIUM USE
+----------------
+Example:
+
+    from spraying_env import SprayingEnv
+    env = SprayingEnv(seed=7)
+    observation, info = env.reset(seed=7)
+    observation, reward, terminated, truncated, info = env.step([0.0, 0.0])
+
+The 9-D observation is [x, y, vx, vy, ex, ey, route_fraction,
+time_fraction, speed]. The 2-D action is normalized x-y acceleration.
+Mass and wind are available in info but deliberately hidden from the policy.
+
+9. TESTING
+----------
+Run all tests:
+
+    source .venv/bin/activate
+    python -m pytest -q
+
+Run the official Gymnasium checker separately:
+
+    python verify_environment.py
+
+10. COMMON ERRORS AND TROUBLESHOOTING
+-------------------------------------
+ModuleNotFoundError: activate .venv and install requirements.txt.
+No MP4: install FFmpeg; the GIF and all figures still work.
+Matplotlib cache warning: set a writable folder, for example:
+
+    mkdir -p .matplotlib
+    MPLCONFIGDIR=.matplotlib python spraying_env.py
+
+Animation is slow: GIF encoding is CPU-intensive; wait for completion.
+Episode crashes: reduce wind or controller acceleration, then rerun tests.
+Different wind: use the same --seed and settings for reproducibility.
+
+11. PHYSICAL AND RESEARCH LIMITATIONS
+-------------------------------------
+There is no z motion, roll, pitch, yaw, motor mixing, rotor dynamics,
+payload sloshing, changing inertia, gust process, or calibrated aerodynamic
+coefficient. Wind is constant per episode. Therefore, this demo is useful
+for software validation but cannot establish real quadrotor robustness.
+
+12. NEXT RESEARCH STAGES
+------------------------
+Validate G1 through G5 in order: nominal; spraying-only; wind-only;
+combined disturbances; unseen-condition generalization. Then compare a
+tuned PID baseline with PPO on identical seeds and metrics. Gain-scheduled
+PID and recurrent PPO are optional later extensions.
