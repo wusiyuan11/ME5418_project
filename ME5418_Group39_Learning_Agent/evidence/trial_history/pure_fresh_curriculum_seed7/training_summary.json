@@ -1,0 +1,22 @@
+{
+  "additional_ppo_environment_steps": 1200000,
+  "previous_pure_ppo_timesteps": 0,
+  "best_validation_step": 1200000,
+  "best_validation_key": [
+    0.0,
+    2.0,
+    -1.0,
+    -0.6481125613460792
+  ],
+  "completed_training_episodes": 9066,
+  "origin": {
+    "initialization": "random",
+    "teacher_environment_steps": 0,
+    "expert_action_labels": 0,
+    "imitation_loss_weight": 0,
+    "previous_pure_ppo_timesteps": 0
+  },
+  "evaluation": "Original full task, original start, 2 m/s, 0.5 m tolerance, 45 s, gusts 3 m/s",
+  "curriculum_caveat": "Training late-route subtask successes are not full-task successes",
+  "elapsed_seconds": 258.3566360629993
+}

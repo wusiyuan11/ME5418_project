@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-12",
+  "scope": "GitHub source synchronization, not new performance tuning",
+  "course_experiment_date": "2026-11-06",
+  "runtime": "Linux x86-64 CPU, Python 3.11.5, PyTorch 2.2.2+cpu",
+  "strict_package_versions": "PASS",
+  "pip_check": "PASS",
+  "tests_passed": 36,
+  "short_training": "4096 policy decisions / 8115 physical steps",
+  "short_training_model_parity": "bit-identical tensors to the verified course smoke run",
+  "checkpoint_regression_evaluation": "3/3 full missions on seeds 90000-90002",
+  "code_model_config_files_identical_to_course_package": 50,
+  "previous_repository_files_preserved": 19,
+  "duplicate_evidence_records_omitted": 7,
+  "duplicate_submission_zip_committed": false,
+  "local_host_logs_committed": false,
+  "limits": "Known observation-bound/deprecation warnings; no exact live-client resume; no new-route or tuned-PID advantage claim"
+}

@@ -1,0 +1,79 @@
+{
+  "ppo": {
+    "total_timesteps": 500000,
+    "seed": 7,
+    "n_envs": 8,
+    "rollout_steps": 256,
+    "batch_size": 256,
+    "epochs": 8,
+    "learning_rate": 0.0003,
+    "value_learning_rate": 0.001,
+    "gamma": 0.995,
+    "gae_lambda": 0.97,
+    "clip_range": 0.2,
+    "target_kl": 0.02,
+    "entropy_coef": 0.0,
+    "eval_every": 40,
+    "eval_episodes": 5,
+    "eval_seed": 60000,
+    "features": "goal",
+    "action_repeat": 4
+  },
+  "training_task": {
+    "reward": "aligned",
+    "curriculum": true,
+    "progress_weight": 0.3,
+    "waypoint_bonus": 10.0,
+    "success_bonus": 30.0,
+    "timeout_penalty": 30.0,
+    "original_reward_scale": 0.1,
+    "features": "goal",
+    "action_repeat": 4,
+    "early_miss_abort": true,
+    "goal_distance_weight": 0.1
+  },
+  "evaluation_environment": {
+    "dt": 0.05,
+    "max_episode_time": 45.0,
+    "field_width": 8.0,
+    "field_length": 12.0,
+    "lane_spacing": 2.0,
+    "altitude": 2.0,
+    "reference_speed": 2.0,
+    "waypoint_tolerance": 0.5,
+    "boundary_margin": 2.0,
+    "dry_mass": 1.5,
+    "liquid_mass_range": [
+      0.35,
+      0.65
+    ],
+    "mass_flow_range": [
+      0.008,
+      0.014
+    ],
+    "wind_mode": "gusts",
+    "max_wind_speed": 3.0,
+    "max_tilt_radians": 0.4363323129985824,
+    "max_yaw_rate": 1.5707963267948966,
+    "thrust_deviation_fraction": 0.6,
+    "reward_weights": {
+      "position": 1.0,
+      "velocity": 0.2,
+      "angular_velocity": 0.05,
+      "control_effort": 0.02,
+      "waypoint_bonus": 3.0,
+      "crash_penalty": 100.0
+    }
+  },
+  "origin": {
+    "initialization": "random",
+    "teacher_environment_steps": 0,
+    "expert_action_labels": 0,
+    "imitation_loss_weight": 0,
+    "previous_pure_ppo_timesteps": 0
+  },
+  "control_rate_hz": 5.0,
+  "physics_rate_hz": 20,
+  "budget_unit": "policy decisions; additional physics steps logged separately",
+  "notes": "Curriculum successes are not original-task successes."
+}

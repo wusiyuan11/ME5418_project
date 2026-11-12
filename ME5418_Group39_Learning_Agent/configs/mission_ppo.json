@@ -1,0 +1,36 @@
+{
+  "description": "Teacher-free outer-loop PPO. Random initialization unless --warm-start-pure is explicitly supplied. Budget unit is policy decisions.",
+  "ppo": {
+    "total_timesteps": 400000,
+    "seed": 7,
+    "n_envs": 8,
+    "rollout_steps": 256,
+    "batch_size": 256,
+    "epochs": 8,
+    "learning_rate": 0.0003,
+    "value_learning_rate": 0.001,
+    "gamma": 0.9975,
+    "gae_lambda": 0.97,
+    "clip_range": 0.2,
+    "target_kl": 0.02,
+    "entropy_coef": 0.0,
+    "eval_every": 40,
+    "eval_episodes": 5,
+    "eval_seed": 60000,
+    "features": "goal",
+    "action_repeat": 2
+  },
+  "task": {
+    "reward": "aligned",
+    "curriculum": true,
+    "progress_weight": 0.3,
+    "waypoint_bonus": 10.0,
+    "success_bonus": 30.0,
+    "timeout_penalty": 30.0,
+    "original_reward_scale": 0.1,
+    "features": "goal",
+    "action_repeat": 2,
+    "early_miss_abort": true,
+    "goal_distance_weight": 0.1
+  }
+}

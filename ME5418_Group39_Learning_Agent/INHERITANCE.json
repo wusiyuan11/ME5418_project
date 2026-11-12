@@ -1,0 +1,133 @@
+{
+  "baseline": "Group39 Neural Network milestone, supplied Oct-30 ZIP",
+  "inherited_files": [
+    {
+      "path": "demo/__init__.py",
+      "stage2_sha256": "80d80c143427e86013e9730f826b2411b04d0951a8b27f321bbd01806fe58ced",
+      "submitted_sha256": "80d80c143427e86013e9730f826b2411b04d0951a8b27f321bbd01806fe58ced",
+      "unchanged": true
+    },
+    {
+      "path": "demo/demo_network.py",
+      "stage2_sha256": "d31ee7e37c3a793e6393892a4b53e5c48748a5ffb204db1436f4bda0068533a0",
+      "submitted_sha256": "d31ee7e37c3a793e6393892a4b53e5c48748a5ffb204db1436f4bda0068533a0",
+      "unchanged": true
+    },
+    {
+      "path": "demo/demo_pid.py",
+      "stage2_sha256": "233f9e2069a886227d94551351ecf617a2438007ad7d445684f16c937227a5f9",
+      "submitted_sha256": "233f9e2069a886227d94551351ecf617a2438007ad7d445684f16c937227a5f9",
+      "unchanged": true
+    },
+    {
+      "path": "demo/demo_random.py",
+      "stage2_sha256": "86b8d3f3b685d6f73e24dfb49f8f40f07386f271622e232969c57c49695849d1",
+      "submitted_sha256": "86b8d3f3b685d6f73e24dfb49f8f40f07386f271622e232969c57c49695849d1",
+      "unchanged": true
+    },
+    {
+      "path": "environment/__init__.py",
+      "stage2_sha256": "d8a8da825087d389799703319d0545753791b3addc402d3b10ed72bb34ecc35d",
+      "submitted_sha256": "d8a8da825087d389799703319d0545753791b3addc402d3b10ed72bb34ecc35d",
+      "unchanged": true
+    },
+    {
+      "path": "environment/drone_dynamics.py",
+      "stage2_sha256": "f9d9421f451843ca7ec8c3016f19948c7e5729a179aeef19b0d0c28f61adef98",
+      "submitted_sha256": "f9d9421f451843ca7ec8c3016f19948c7e5729a179aeef19b0d0c28f61adef98",
+      "unchanged": true
+    },
+    {
+      "path": "environment/payload_model.py",
+      "stage2_sha256": "8d08e1331776e786da8b91bab1ed4ec9e7fe1d96f71e52d7685aa4a2d3393199",
+      "submitted_sha256": "8d08e1331776e786da8b91bab1ed4ec9e7fe1d96f71e52d7685aa4a2d3393199",
+      "unchanged": true
+    },
+    {
+      "path": "environment/reward.py",
+      "stage2_sha256": "cb5cc52e953fd42ae24e4abe9550a903bb75634fee5dee0618d319007817837f",
+      "submitted_sha256": "cb5cc52e953fd42ae24e4abe9550a903bb75634fee5dee0618d319007817837f",
+      "unchanged": true
+    },
+    {
+      "path": "environment/spraying_env.py",
+      "stage2_sha256": "8796687661222f45e8a5b05ff380943c678e4b5d7e1964ba397c523cfdca8d50",
+      "submitted_sha256": "8796687661222f45e8a5b05ff380943c678e4b5d7e1964ba397c523cfdca8d50",
+      "unchanged": true
+    },
+    {
+      "path": "environment/trajectory.py",
+      "stage2_sha256": "7e19adfccd76a9e93b6be1d7c366e634c0f08f107e7bfd995738bfeb25708892",
+      "submitted_sha256": "7e19adfccd76a9e93b6be1d7c366e634c0f08f107e7bfd995738bfeb25708892",
+      "unchanged": true
+    },
+    {
+      "path": "environment/wind_model.py",
+      "stage2_sha256": "7f9f04e594f2af4982d1793ac205db191f85765305988d372e33d189dbc64993",
+      "submitted_sha256": "7f9f04e594f2af4982d1793ac205db191f85765305988d372e33d189dbc64993",
+      "unchanged": true
+    },
+    {
+      "path": "rl/__init__.py",
+      "stage2_sha256": "0f6eb02237ab94200c5aac254ebc4489134d824fff335e8edbefe10dd3dde1cd",
+      "submitted_sha256": "0f6eb02237ab94200c5aac254ebc4489134d824fff335e8edbefe10dd3dde1cd",
+      "unchanged": true
+    },
+    {
+      "path": "rl/network.py",
+      "stage2_sha256": "385f548fbd75c31d7c2328a8fe9b169e961c256aae188b8add2d77ba32051fcc",
+      "submitted_sha256": "385f548fbd75c31d7c2328a8fe9b169e961c256aae188b8add2d77ba32051fcc",
+      "unchanged": true
+    },
+    {
+      "path": "rl/ppo.py",
+      "stage2_sha256": "5578e2fa5ac2ac8a6c9dc2a8bf0c1fe97766e3ba52180ca34350a7da33bcb951",
+      "submitted_sha256": "b0cba58e7ef5c3c1e6c264be176c7a7ce2c78dcd567ece4bd0bdc1fe2265381a",
+      "unchanged": false
+    },
+    {
+      "path": "tests/test_dynamics.py",
+      "stage2_sha256": "9dc68209ce06bb0b3922ed29b79ad0b5dc9833af34171446cc3a7892517c5086",
+      "submitted_sha256": "9dc68209ce06bb0b3922ed29b79ad0b5dc9833af34171446cc3a7892517c5086",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_environment.py",
+      "stage2_sha256": "6a3664511150c1e3359a5d49472d4c7898f8c4749619a9babf37633d38fd46f9",
+      "submitted_sha256": "6a3664511150c1e3359a5d49472d4c7898f8c4749619a9babf37633d38fd46f9",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_network.py",
+      "stage2_sha256": "89fe2e68ba92ffa5c510ec82069fca618803ecb98e531b8feb81f8bed4ecc3b6",
+      "submitted_sha256": "89fe2e68ba92ffa5c510ec82069fca618803ecb98e531b8feb81f8bed4ecc3b6",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_reward.py",
+      "stage2_sha256": "bb4064bff8071120b67a16f869c1e6a3d9076fed6c80d00bc6bd585438ba1389",
+      "submitted_sha256": "bb4064bff8071120b67a16f869c1e6a3d9076fed6c80d00bc6bd585438ba1389",
+      "unchanged": true
+    },
+    {
+      "path": "visualization/__init__.py",
+      "stage2_sha256": "21b7cca2edd35a54ea792f37fd98eca5889211b6f3aad3242a35b81eb8ae7606",
+      "submitted_sha256": "21b7cca2edd35a54ea792f37fd98eca5889211b6f3aad3242a35b81eb8ae7606",
+      "unchanged": true
+    },
+    {
+      "path": "visualization/animate_episode.py",
+      "stage2_sha256": "8dfd772822311e29c9396ad319b3bc726a801d843b49bc574e9da4dca4ce17b8",
+      "submitted_sha256": "8dfd772822311e29c9396ad319b3bc726a801d843b49bc574e9da4dca4ce17b8",
+      "unchanged": true
+    },
+    {
+      "path": "visualization/plot_trajectory.py",
+      "stage2_sha256": "ab3cc87b1de7ae1faac20b907f481d9a5c3fda7c4da8844615909f5376269ff1",
+      "submitted_sha256": "ab3cc87b1de7ae1faac20b907f481d9a5c3fda7c4da8844615909f5376269ff1",
+      "unchanged": true
+    }
+  ],
+  "new_policy": "pure_rl/agent.py extends the inherited network from 15 to 23 inputs",
+  "historical_research": "Full experiments remain in the separate Pure_PPO research package."
+}

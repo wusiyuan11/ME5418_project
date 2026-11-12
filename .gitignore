@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.DS_Store
+.env
+condaenv.*.requirements.txt
+
+# New generated experiments stay local unless intentionally curated as evidence.
+/ME5418_Group39_Learning_Agent/runs/
+/ME5418_Group39_Learning_Agent/evaluations/
+/ME5418_Group39_Learning_Agent/*.tmp

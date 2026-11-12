@@ -1,0 +1,229 @@
+{
+  "controllers": {
+    "pure_turn_repeat2_warm_seed7": {
+      "episodes": 20,
+      "seeds": [
+        80000,
+        80001,
+        80002,
+        80003,
+        80004,
+        80005,
+        80006,
+        80007,
+        80008,
+        80009,
+        80010,
+        80011,
+        80012,
+        80013,
+        80014,
+        80015,
+        80016,
+        80017,
+        80018,
+        80019
+      ],
+      "mean": {
+        "return": -17.474177459018318,
+        "steps": 698.95,
+        "tracking_rmse_m": 0.8440389362926313,
+        "max_tracking_error_m": 2.0416979579100727,
+        "cross_track_rmse_m": 0.471853234799034,
+        "max_cross_track_error_m": 1.3731919816929397,
+        "mean_action_squared": 0.3864843130111694,
+        "waypoints_achieved": 9.65
+      },
+      "std": {
+        "return": 34.39269612976958,
+        "steps": 51.893617141224595,
+        "tracking_rmse_m": 0.041928149989614194,
+        "max_tracking_error_m": 0.22525225427281365,
+        "cross_track_rmse_m": 0.03953166258932699,
+        "max_cross_track_error_m": 0.24323626412197666,
+        "mean_action_squared": 0.04505201858250121,
+        "waypoints_achieved": 0.8529361054615991
+      },
+      "rates": {
+        "success": 0.85,
+        "crashed": 0.0,
+        "boundary_violation": 0.1,
+        "time_limit": 0.05
+      },
+      "successes": 17,
+      "success_wilson_95": [
+        0.6395811352592431,
+        0.9476312541037835
+      ]
+    },
+    "original_pid": {
+      "episodes": 20,
+      "seeds": [
+        80000,
+        80001,
+        80002,
+        80003,
+        80004,
+        80005,
+        80006,
+        80007,
+        80008,
+        80009,
+        80010,
+        80011,
+        80012,
+        80013,
+        80014,
+        80015,
+        80016,
+        80017,
+        80018,
+        80019
+      ],
+      "mean": {
+        "return": -26.38190712238229,
+        "steps": 889.0,
+        "tracking_rmse_m": 0.8218663264821175,
+        "max_tracking_error_m": 1.83788044048672,
+        "cross_track_rmse_m": 0.4674363620112076,
+        "max_cross_track_error_m": 1.083142424410554,
+        "mean_action_squared": 0.26769060641527176,
+        "waypoints_achieved": 4.7
+      },
+      "std": {
+        "return": 7.370822794395781,
+        "steps": 47.94788837894741,
+        "tracking_rmse_m": 0.03419281017075049,
+        "max_tracking_error_m": 0.07537270952744904,
+        "cross_track_rmse_m": 0.03487478400753844,
+        "max_cross_track_error_m": 0.04468994501284903,
+        "mean_action_squared": 0.01852843544981582,
+        "waypoints_achieved": 2.1
+      },
+      "rates": {
+        "success": 0.05,
+        "crashed": 0.0,
+        "boundary_violation": 0.0,
+        "time_limit": 0.95
+      },
+      "successes": 1,
+      "success_wilson_95": [
+        0.008881448800795402,
+        0.23613119344674205
+      ]
+    },
+    "tuned_classical": {
+      "episodes": 20,
+      "seeds": [
+        80000,
+        80001,
+        80002,
+        80003,
+        80004,
+        80005,
+        80006,
+        80007,
+        80008,
+        80009,
+        80010,
+        80011,
+        80012,
+        80013,
+        80014,
+        80015,
+        80016,
+        80017,
+        80018,
+        80019
+      ],
+      "mean": {
+        "return": 2.868238564712642,
+        "steps": 680.0,
+        "tracking_rmse_m": 0.6325950150470608,
+        "max_tracking_error_m": 1.5199995094831302,
+        "cross_track_rmse_m": 0.385722355931383,
+        "max_cross_track_error_m": 1.039169464235618,
+        "mean_action_squared": 0.47382052391767504,
+        "waypoints_achieved": 10.0
+      },
+      "std": {
+        "return": 1.0451262583905354,
+        "steps": 0.0,
+        "tracking_rmse_m": 0.02318717246910243,
+        "max_tracking_error_m": 0.05389887029510984,
+        "cross_track_rmse_m": 0.024674208217329983,
+        "max_cross_track_error_m": 0.08576249489125733,
+        "mean_action_squared": 0.007014850771513941,
+        "waypoints_achieved": 0.0
+      },
+      "rates": {
+        "success": 1.0,
+        "crashed": 0.0,
+        "boundary_violation": 0.0,
+        "time_limit": 0.0
+      },
+      "successes": 20,
+      "success_wilson_95": [
+        0.8388748419471806,
+        1.0
+      ]
+    }
+  },
+  "seeds": [
+    80000,
+    80001,
+    80002,
+    80003,
+    80004,
+    80005,
+    80006,
+    80007,
+    80008,
+    80009,
+    80010,
+    80011,
+    80012,
+    80013,
+    80014,
+    80015,
+    80016,
+    80017,
+    80018,
+    80019
+  ],
+  "environment": {
+    "dt": 0.05,
+    "max_episode_time": 45.0,
+    "field_width": 8.0,
+    "field_length": 12.0,
+    "lane_spacing": 2.0,
+    "altitude": 2.0,
+    "reference_speed": 2.0,
+    "waypoint_tolerance": 0.5,
+    "boundary_margin": 2.0,
+    "dry_mass": 1.5,
+    "liquid_mass_range": [
+      0.35,
+      0.65
+    ],
+    "mass_flow_range": [
+      0.008,
+      0.014
+    ],
+    "wind_mode": "gusts",
+    "max_wind_speed": 4.5,
+    "max_tilt_radians": 0.4363323129985824,
+    "max_yaw_rate": 1.5707963267948966,
+    "thrust_deviation_fraction": 0.6,
+    "reward_weights": {
+      "position": 1.0,
+      "velocity": 0.2,
+      "angular_velocity": 0.05,
+      "control_effort": 0.02,
+      "waypoint_bonus": 3.0,
+      "crash_penalty": 100.0
+    }
+  },
+  "reward": "original unscaled environment reward",
+  "fairness_note": "PPO uses public mission progress and reference velocity; all true wind/mass hidden. Classical policies run at20Hz, PPO at saved rate. Budgets unequal; no equal-budget superiority claim."
+}

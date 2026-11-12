@@ -1,0 +1,368 @@
+{
+  "validation_seeds": [
+    60000,
+    60001,
+    60002,
+    60003,
+    60004,
+    60005,
+    60006,
+    60007,
+    60008,
+    60009
+  ],
+  "test_seeds": [
+    70000,
+    70001,
+    70002,
+    70003,
+    70004,
+    70005,
+    70006,
+    70007,
+    70008,
+    70009,
+    70010,
+    70011,
+    70012,
+    70013,
+    70014,
+    70015,
+    70016,
+    70017,
+    70018,
+    70019,
+    70020,
+    70021,
+    70022,
+    70023,
+    70024,
+    70025,
+    70026,
+    70027,
+    70028,
+    70029,
+    70030,
+    70031,
+    70032,
+    70033,
+    70034,
+    70035,
+    70036,
+    70037,
+    70038,
+    70039,
+    70040,
+    70041,
+    70042,
+    70043,
+    70044,
+    70045,
+    70046,
+    70047,
+    70048,
+    70049
+  ],
+  "stress_seeds": [
+    80000,
+    80001,
+    80002,
+    80003,
+    80004,
+    80005,
+    80006,
+    80007,
+    80008,
+    80009,
+    80010,
+    80011,
+    80012,
+    80013,
+    80014,
+    80015,
+    80016,
+    80017,
+    80018,
+    80019
+  ],
+  "selected": {
+    "name": "pure_turn_repeat2_warm_seed7",
+    "path": "experiments/pure_turn_repeat2_warm_seed7/best.pt",
+    "kind": "pure",
+    "sha256": "d3d1cec463fbf179001ff290192e896f83f37e7e2187a7911e1933f3feeeb605",
+    "policy_decisions": 245760,
+    "physics_timesteps": 490722,
+    "control_rate_hz": 10.0,
+    "origin": {
+      "initialization": "previous pure PPO, no teacher",
+      "teacher_environment_steps": 0,
+      "expert_action_labels": 0,
+      "imitation_loss_weight": 0,
+      "previous_pure_ppo_timesteps": 981984,
+      "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+      "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+      "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+    }
+  },
+  "test_models": [
+    {
+      "name": "original_ppo_300k",
+      "path": "runs/ppo_seed7_300000/best.pt",
+      "kind": "legacy",
+      "sha256": "a76acf9d8db658b6770b3957fa78097e43752c97e9d8258adc076fb4b5bcf367"
+    },
+    {
+      "name": "original_ppo_1m",
+      "path": "runs/longer_ppo_seed7/best.pt",
+      "kind": "legacy",
+      "sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883"
+    },
+    {
+      "name": "pure_turn_repeat4_warm_seed7",
+      "path": "experiments/pure_turn_repeat4_warm_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "18ac34bc9f9ad818825c21fad2c6a5e72a83d1bf1aa69ebd2795cad7d958aed6",
+      "policy_decisions": 245760,
+      "physics_timesteps": 977953,
+      "control_rate_hz": 5.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_turn_repeat2_warm_seed7",
+      "path": "experiments/pure_turn_repeat2_warm_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "d3d1cec463fbf179001ff290192e896f83f37e7e2187a7911e1933f3feeeb605",
+      "policy_decisions": 245760,
+      "physics_timesteps": 490722,
+      "control_rate_hz": 10.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_turn_repeat2_warm_seed8",
+      "path": "experiments/pure_turn_repeat2_warm_seed8/best.pt",
+      "kind": "pure",
+      "sha256": "2a87dd7ee7e3d35471a5b4f6219dfdc7e2a784b1278fb58df2d2841ae6caa601",
+      "policy_decisions": 400000,
+      "physics_timesteps": 798689,
+      "control_rate_hz": 10.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_turn_repeat2_fresh_seed7",
+      "path": "experiments/pure_turn_repeat2_fresh_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "3651b4220592fc6cc007671ca5a79e653cb95238b7f2b9b46779088f87d03754",
+      "policy_decisions": 163840,
+      "physics_timesteps": 324769,
+      "control_rate_hz": 10.0,
+      "origin": {
+        "initialization": "random",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 0
+      }
+    },
+    {
+      "name": "original_pid",
+      "kind": "pid"
+    },
+    {
+      "name": "tuned_classical",
+      "kind": "classical"
+    }
+  ],
+  "all_candidates": [
+    {
+      "name": "pure_observation_seed7",
+      "path": "experiments/pure_observation_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "cff7dfa67b4386343563278d2c78bcf5c913fe977b3fef820a3b6eb9ad80bd6a",
+      "policy_decisions": 0,
+      "physics_timesteps": 0,
+      "control_rate_hz": 20.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_reward_seed7",
+      "path": "experiments/pure_reward_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "584c5dd192a98dcaa08fd0e8b9447c9e65c7f5c96b1db0a184f0fe2806febbad",
+      "policy_decisions": 0,
+      "physics_timesteps": 0,
+      "control_rate_hz": 20.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_curriculum_seed7",
+      "path": "experiments/pure_curriculum_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "d1a6d8d4f47aedd5012ad6a9cbebf123ce0165a52b260487e71c8cdc3499a6d4",
+      "policy_decisions": 0,
+      "physics_timesteps": 0,
+      "control_rate_hz": 20.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_fresh_curriculum_seed7",
+      "path": "experiments/pure_fresh_curriculum_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "534f1e1fc5c6bd865b7b80482324b2d11f910439830b69bb71cbc69592e0dab2",
+      "policy_decisions": 1200000,
+      "physics_timesteps": 1200000,
+      "control_rate_hz": 20.0,
+      "origin": {
+        "initialization": "random",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 0
+      }
+    },
+    {
+      "name": "pure_turn_repeat4_warm_seed7",
+      "path": "experiments/pure_turn_repeat4_warm_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "18ac34bc9f9ad818825c21fad2c6a5e72a83d1bf1aa69ebd2795cad7d958aed6",
+      "policy_decisions": 245760,
+      "physics_timesteps": 977953,
+      "control_rate_hz": 5.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_turn_repeat4_fresh_seed7",
+      "path": "experiments/pure_turn_repeat4_fresh_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "addc777b3f80cbf9242de943fbac04d2827a6ce918b0b0da32c752a36b65a60e",
+      "policy_decisions": 163840,
+      "physics_timesteps": 637672,
+      "control_rate_hz": 5.0,
+      "origin": {
+        "initialization": "random",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 0
+      }
+    },
+    {
+      "name": "pure_turn_repeat2_warm_seed7",
+      "path": "experiments/pure_turn_repeat2_warm_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "d3d1cec463fbf179001ff290192e896f83f37e7e2187a7911e1933f3feeeb605",
+      "policy_decisions": 245760,
+      "physics_timesteps": 490722,
+      "control_rate_hz": 10.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_turn_repeat2_warm_seed8",
+      "path": "experiments/pure_turn_repeat2_warm_seed8/best.pt",
+      "kind": "pure",
+      "sha256": "2a87dd7ee7e3d35471a5b4f6219dfdc7e2a784b1278fb58df2d2841ae6caa601",
+      "policy_decisions": 400000,
+      "physics_timesteps": 798689,
+      "control_rate_hz": 10.0,
+      "origin": {
+        "initialization": "previous pure PPO, no teacher",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 981984,
+        "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+        "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+        "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+      }
+    },
+    {
+      "name": "pure_turn_repeat2_fresh_seed7",
+      "path": "experiments/pure_turn_repeat2_fresh_seed7/best.pt",
+      "kind": "pure",
+      "sha256": "3651b4220592fc6cc007671ca5a79e653cb95238b7f2b9b46779088f87d03754",
+      "policy_decisions": 163840,
+      "physics_timesteps": 324769,
+      "control_rate_hz": 10.0,
+      "origin": {
+        "initialization": "random",
+        "teacher_environment_steps": 0,
+        "expert_action_labels": 0,
+        "imitation_loss_weight": 0,
+        "previous_pure_ppo_timesteps": 0
+      }
+    }
+  ],
+  "selection_rule": "strict success, ordered waypoints, fewer failures, lower RMSE",
+  "no_imitation": true
+}

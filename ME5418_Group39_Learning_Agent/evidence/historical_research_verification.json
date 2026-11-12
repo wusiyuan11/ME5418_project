@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-06",
+  "runtime": {
+    "python": "3.11.5",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "packages": {
+      "torch": "2.2.2+cpu",
+      "numpy": "1.26.4",
+      "gymnasium": "1.2.1",
+      "pybullet": "3.2.7",
+      "matplotlib": "3.9.4",
+      "Pillow": "12.3.0"
+    }
+  },
+  "conda_tests_passed": 29,
+  "teacher_environment_steps": 0,
+  "expert_action_labels": 0,
+  "imitation_loss_weight": 0,
+  "learner_does_not_import_classical_or_imitation_modules": true,
+  "audited_checkpoints": [
+    "experiments/pure_reward_seed7/best.pt",
+    "experiments/pure_repeat2_seed7_reproduction/best.pt",
+    "experiments/pure_turn_repeat2_warm_seed8/best.pt",
+    "experiments/pure_curriculum_seed7/best.pt",
+    "experiments/pure_turn_repeat2_warm_seed7/best.pt",
+    "experiments/pure_turn_repeat2_fresh_seed7/best.pt",
+    "experiments/pure_turn_repeat4_fresh_seed7/best.pt",
+    "experiments/pure_observation_seed7/best.pt",
+    "experiments/pure_turn_repeat4_warm_seed7/best.pt",
+    "experiments/pure_fresh_curriculum_seed7/best.pt"
+  ],
+  "inherited_environment_and_network_sha256": {
+    "environment/payload_model.py": "8d08e1331776e786da8b91bab1ed4ec9e7fe1d96f71e52d7685aa4a2d3393199",
+    "environment/spraying_env.py": "8796687661222f45e8a5b05ff380943c678e4b5d7e1964ba397c523cfdca8d50",
+    "environment/drone_dynamics.py": "f9d9421f451843ca7ec8c3016f19948c7e5729a179aeef19b0d0c28f61adef98",
+    "environment/reward.py": "cb5cc52e953fd42ae24e4abe9550a903bb75634fee5dee0618d319007817837f",
+    "environment/trajectory.py": "7e19adfccd76a9e93b6be1d7c366e634c0f08f107e7bfd995738bfeb25708892",
+    "environment/__init__.py": "d8a8da825087d389799703319d0545753791b3addc402d3b10ed72bb34ecc35d",
+    "environment/wind_model.py": "7f9f04e594f2af4982d1793ac205db191f85765305988d372e33d189dbc64993",
+    "rl/network.py": "385f548fbd75c31d7c2328a8fe9b169e961c256aae188b8add2d77ba32051fcc"
+  },
+  "repeated_seed7_best_model_tensors_identical": true,
+  "repeated_seed7_best_decision_step": 245760,
+  "seed7_best_additional_physics_steps": 490722,
+  "test_episodes": 400,
+  "test_controllers": 8,
+  "seed_partitions_disjoint": true,
+  "selected_model_matches_pretest_lock": true,
+  "selected_checkpoint_sha256": "d3d1cec463fbf179001ff290192e896f83f37e7e2187a7911e1933f3feeeb605",
+  "partial_training_episodes_not_counted_as_full_success": 1341,
+  "pdf_or_word_generated": false,
+  "scope": "Fixed route; teacher-free two-stage PPO; shared stage1 for continuation seeds; unequal budgets"
+}

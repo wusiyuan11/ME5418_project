@@ -1,0 +1,28 @@
+{
+  "additional_ppo_environment_steps": 400000,
+  "budget_unit": "policy decision transitions",
+  "additional_physics_steps": 799170,
+  "control_rate_hz": 10.0,
+  "previous_pure_ppo_timesteps": 981984,
+  "best_validation_step": 245760,
+  "best_validation_key": [
+    1.0,
+    10.0,
+    -0.0,
+    -0.8126306580672468
+  ],
+  "completed_training_episodes": 2826,
+  "origin": {
+    "initialization": "previous pure PPO, no teacher",
+    "teacher_environment_steps": 0,
+    "expert_action_labels": 0,
+    "imitation_loss_weight": 0,
+    "previous_pure_ppo_timesteps": 981984,
+    "source_checkpoint": "runs/longer_ppo_seed7/best.pt",
+    "source_sha256": "7d34f02f51aad669c455835cf7c315c0b3ad353dd86bccac739a6726e4dfe883",
+    "optimizer_restart": "fresh Adam; deterministic old action mapping preserved"
+  },
+  "evaluation": "Original full task, original start, 2 m/s, 0.5 m tolerance, 45 s, gusts 3 m/s",
+  "curriculum_caveat": "Training late-route subtask successes are not full-task successes",
+  "elapsed_seconds": 121.62125768599981
+}
