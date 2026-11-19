@@ -1,32 +1,46 @@
-# ME5418 Group 39 - Learning Agent C&R
+# ME5418 Group 39 - Final team handoff
 
-This is the third milestone's learning-agent source and recorded results. The shared **two-page report** is `report/ME5418_Group39_Learning_Agent_Report.pdf`. The emphasis is a reasonable, explainable, trainable framework, not a claim that RL must beat PID.
+Release: **19 November 2026**. This is the reproducible source/model/documentation
+handoff for the group, not an individual final report. Read
+[START_HERE_组员必读.md](START_HERE_组员必读.md) for the Chinese handoff.
 
-This directory is the stable GitHub location, synchronized from the verified 6 November course materials on 12 November 2026. Training code, configuration, models and measured values are retained; repeated evidence is stored once and host-specific packaging logs are omitted. No new long training was performed for this synchronization. The separate course ZIP is not committed, to avoid duplicating the whole source tree.
+## What changed in this release?
 
-This updated submission adds explanatory code comments and three focused regression tests, highlights the waypoint-aware design advance in the two-page report, and separates completion/error/reward results more clearly. Training logic, settings, model weights and measured experiment data are unchanged; comments/docstrings are verified separately from executable syntax. The plain report style follows the previous milestone reports. Its editable text is `report/REPORT_SOURCE.md`; `本次提交说明.md` is a short Chinese handoff explanation.
+The TA asked for a visible Actor-Critic data path and clearer reuse of the
+earlier Conda environment. This release adds a diagram, shared technical note,
+old-to-new dependency table, corrected update commands and consistent inventory.
 
-## Main advance since the previous Neural Network submission
+**All 45 Python files, both models, the main training JSON and both environment
+specifications are byte-identical to the latest source archive supplied by the
+group on 19 November.** No refactoring, formatting or extra Python module was
+introduced here. The per-file hashes in `verification/code_preservation.json`
+prove preservation, not authorship or an originality score.
 
-The old environment already recorded ordered arrivals, but its 15-input policy could not observe that history. The new policy receives **completed-waypoint fraction c/N** and **position error to the next outstanding waypoint[c]**, plus reference-velocity error and remaining time. When reference time moves past a missed point, the outstanding goal remains visible. We add actual-arrival-oriented training feedback and a sustained PPO workflow; we do not add new route points or relax success. See `CODE_GUIDE.md` for feature indices and annotated code locations.
+- [Architecture PNG](docs/actor_critic_architecture.png) / [vector SVG](docs/actor_critic_architecture.svg)
+- [Shared technical handoff PDF](docs/ME5418_Group39_Technical_Handoff.pdf) / [editable text](docs/TECHNICAL_HANDOFF.md)
+- [Complete environment migration](docs/ENVIRONMENT_MIGRATION.md)
+- [Response to the TA](docs/TA_FEEDBACK_RESPONSE.md)
+- [Recorded results and limits](results/RESULTS_SUMMARY.md)
+- [Code provenance and disclosures](CODE_PROVENANCE.md)
 
-The previous course submission demonstrated 128 transitions and one PPO update, not a trained success rate. The trained 15D baselines in our results were produced afterwards. Changes were explored together, and observation-only trials failed; do not attribute the entire success gain to the new inputs alone. Reference itself still advances by time.
+![Independent Actor and Critic branches from the same 23 inputs](docs/actor_critic_architecture.png)
 
-## Read the results first
+The shared technical note is **not a substitute for any member's required
+individual final report**. `report/` preserves the November 6 two-page Learning
+Agent report as clearly labelled history. Check final course upload rules
+separately. The supplied video is in `media/`.
 
-- `results/RESULTS_SUMMARY.md`: original-task completion, ordered arrivals, tracking RMSE, evaluation return, validation learning progress and stress results, with their limitations.
-- `results/heldout_comparison.png`: completion and tracking shown side by side; the same successful policy is not necessarily the most accurate tracker.
-- `results/training_rewards.png`: shaped training reward and original raw reward shown separately, using recorded full-start training attempts.
-- `results/comparison.csv`: machine-readable controller means. Rebuild these presentations with `python -m tools.summarize_results`; this performs no training or new model selection.
+## 1. Install, or reuse the previous environment
 
-The agent is **custom PyTorch PPO**, extending the group's Oct-30 environment and actor-critic. It is not Stable-Baselines3, behavior cloning or PID-guided action learning. No teacher data or imitation model is loaded by default. The successful supplied checkpoint has a disclosed **two-stage PPO-only** training history. Random-start runs can update successfully without completing the mission.
+Run commands from this directory. The verification target is Linux x86-64 CPU,
+Python 3.11.5 and PyTorch 2.2.2+cpu, with in-process PyBullet DIRECT simulation.
+No GPU, separate simulator, dataset or external pretrained policy is required.
+Installation needs internet. Darwin/Windows recreation is not newly verified.
 
-## 1. Install and verify
-
-From this directory, with Conda installed:
+### A. Create the current environment (isolated option)
 
 ```bash
-conda env create -f environment.yml
+conda env create --file environment.yml
 conda activate me5418-learning-agent
 python verify_setup.py --strict-versions
 python -m pip check
@@ -34,35 +48,97 @@ python -m pytest -q
 python -m tools.verify_submission
 ```
 
-`environment.yml` and `requirements.txt` pin Python/runtime libraries. Tested on Linux x86-64 CPU, Python 3.11.5 and PyTorch 2.2.2+cpu. No CUDA, external simulator process, dataset, account or pretrained external policy is needed. PyBullet runs in DIRECT mode in the same process. The Darwin torch branch is provided but not independently tested. Internet is needed only for initial package installation. Verification records are in `verification/`.
+### B. Update the earlier Neural Network environment, keeping its name
 
-The framework has **36 tests**; `tests/test_mission_progress.py` specifically checks visit-history visibility, the outstanding goal after reference advancement, and independence of Actor actions from Critic output. See `verification/` for the repository synchronization check, and rerun the commands above in your own environment.
+The earlier environment was **me5418-aerial-spraying**. It is not the current
+YAML's default name. Target it explicitly, then activate that same old name:
 
-## 2. Quick framework smoke run - random initialization
+```bash
+conda env update --name me5418-aerial-spraying --file environment.yml --prune
+conda activate me5418-aerial-spraying
+python verify_setup.py --strict-versions
+python -m pip check
+python -m pytest -q
+python -m tools.verify_submission
+```
+
+Close running training processes first. Save an export outside this release
+directory if the old environment is shared with other work. No environment is
+renamed above. Pruning can remove Conda-managed extras; pip extras may remain.
+Prefer A when isolation matters.
+
+### C. Refresh an already-existing current-named environment
+
+```bash
+conda env update --name me5418-learning-agent --file environment.yml --prune
+conda activate me5418-learning-agent
+python verify_setup.py --strict-versions
+python -m pip check
+```
+
+### Dependency changes since the Neural Network assignment
+
+| Dependency | Previous submission | Current pin / purpose |
+|---|---|---|
+| Environment name | me5418-aerial-spraying | me5418-learning-agent; explicit update target needed |
+| Python | 3.11.6 | 3.11.5; CPU interpreter pin |
+| PyTorch | 2.2.2 | 2.2.2+cpu on Linux; same base framework version |
+| NumPy | 1.24.3 | 1.26.4; numerical calculations |
+| Matplotlib | 3.7.2 | 3.9.4; plots |
+| Pillow | 13.0.0 | 12.3.0; images/GIFs, a repin not an upgrade |
+| pytest | 7.4.0 | 8.3.5; tests |
+| PyYAML | Not explicitly declared | 6.0.3; environment verification |
+| ReportLab | Not explicitly declared | 4.4.4; PDF generation, not policy learning |
+| charset-normalizer | Not explicitly declared | 3.5.2; ReportLab dependency |
+| setuptools | Not explicitly pinned | 65.5.0; packaging toolchain |
+| Gymnasium / PyBullet | 1.2.1 / 3.2.7 | Unchanged API / simulator |
+
+[ENVIRONMENT_MIGRATION.md](docs/ENVIRONMENT_MIGRATION.md) lists all other repins.
+The unchanged YAML and requirements file remain authoritative. No SB3,
+imitation-learning library or different simulator was introduced. Actual
+release checks, including resource limitations, are in `verification/`.
+
+## 2. First run: CPU network demo and saved-policy check
+
+```bash
+python -m demo.demo_network --steps 128 --updates 1 --output outputs/my_network_demo.json
+python -m pure_rl.evaluate --checkpoint models/mission_ppo.pt --episodes 3 --seed-start 92000 --output evaluations/my_check
+```
+
+The group-supplied demo exercises the **23-input mission network**: observation,
+Gaussian mean/std, bounded action, Critic value, gradient norms, optimizer
+steps and changed parameters in both branches. One update is a mechanism check,
+not convergence. Reusing the demo output path overwrites its JSON/PT; choose
+a different path to retain an old run. Evaluation/training directories must be
+new. Three episodes are a regression check, not a general success-rate claim.
+
+## 3. Training commands
+
+Short random-initialized training-path check:
 
 ```bash
 python run_learning_agent.py --total-timesteps 4096 --eval-every 1 --eval-episodes 1 --output runs/my_smoke
 ```
 
-This executes actual simulation, rollout, GAE, policy/value gradient updates, validation, checkpoint writing and plotting. It uses **no supplied weights**. A completed smoke run is not evidence of a competent controller. Every output directory must be new to prevent overwriting results.
-
-## 3. Train the mission agent
-
-All main settings are explicit in `configs/mission_ppo.json`. To train from random weights:
+Full configured training from random weights:
 
 ```bash
 python run_learning_agent.py --output runs/my_random_training
 ```
 
-To repeat the successful PPO-only continuation stage using the included group-trained foundation:
+PPO-only continuation with the supplied group-trained foundation:
 
 ```bash
-python run_learning_agent.py --warm-start-pure models/foundation_ppo.pt --output runs/my_ppo_continuation
+python run_learning_agent.py --warm-start-pure models/foundation_ppo.pt --output runs/my_continuation
 ```
 
-Both execute the same PPO objective. The foundation is NOT an imitation checkpoint: its 15-input policy was trained with the group's earlier PPO pipeline for 981984 physics steps at its selected checkpoint. The new 23-input layer copies/rescales those 15 input weights and initializes the eight added feature weights to zero; Adam restarts. This preserves deterministic initial actions, not critic calibration under the revised objective. The successful mission checkpoint is at 245760 new decisions / 490722 new physics steps, in a run continued to 400000 decisions / 799170 physics steps. See `models/README.md`.
+The successful supplied model used **two PPO stages**, not expert labels,
+behavior cloning or imitation weights. The 15-input foundation learned coarse
+tracking. The continuation widens inputs to 23, copies/rescales the first 15
+weight columns, initially zeros the added columns and restarts Adam. It learns
+the new task features from interaction reward. See `models/README.md`.
 
-To reproduce the two-stage procedure without any supplied weights:
+To reproduce the procedure without supplied weights:
 
 ```bash
 python train.py --total-timesteps 300000 --n-steps 2048 --seed 7 --eval-every 20 --eval-episodes 3 --output runs/my_foundation_300k
@@ -70,42 +146,77 @@ python train.py --resume runs/my_foundation_300k/final.pt --total-timesteps 1000
 python run_learning_agent.py --warm-start-pure runs/my_foundation_1m/best.pt --output runs/my_mission
 ```
 
-This reproduces the procedure; convergence from arbitrary initializations is not guaranteed. The older `train.py` uses the inherited 15-input policy; the new `run_learning_agent.py` / `pure_rl.train` use the 23-input mission policy. Do not mix their checkpoint formats or evaluation entry points.
+Convergence is not guaranteed. The original 15-input and current 23-input
+checkpoint formats/evaluators are not interchangeable. Main settings are in
+`configs/mission_ppo.json`. The current budget counts decisions across eight
+clients. Action repeat 2 gives roughly 10 Hz outer control and 20 Hz physics/
+inner control; separately logged physical steps handle early terminations.
 
-**Budget units:** the new trainer counts total **policy decisions across eight environments**. A held action lasts up to two 0.05 s physics steps (policy 10 Hz, physics/inner loop 20 Hz). Real physics counts are logged separately. The old `train.py` uses one policy decision per physics step. Training wall time depends on the CPU; no short runtime promise is made.
+The older trainer's resume starts a fresh episode. The new vectorized trainer
+does not expose exact mid-run resume or restore eight live simulator states.
+Saved weights and Adam states are not a full live-physics snapshot.
 
-**Restart limits:** the old foundation trainer supports `--resume` (fresh simulator episode). The new vectorized curriculum trainer saves initial/best/latest/final/interrupted weights, both Adam states and metadata, but does **not** expose exact mid-run resume or restore eight live physics states. Interrupted new-stage weights can be evaluated; restart the stage into a new output directory for further experiments. Do not present interrupted weights as a full simulator snapshot.
-
-## 4. Evaluate a saved mission agent
+## 4. Evaluation, results and replay
 
 ```bash
-python -m pure_rl.evaluate --checkpoint models/mission_ppo.pt --episodes 3 --seed-start 90000 --animation --output evaluations/my_replay
-python -m pure_rl.evaluate --checkpoint models/mission_ppo.pt --episodes 50 --seed-start 70000 --output evaluations/reproduce_published_test
+python -m pure_rl.evaluate --checkpoint models/mission_ppo.pt --episodes 50 --seed-start 70000 --output evaluations/published_reproduction
+python -m pure_rl.evaluate --checkpoint models/mission_ppo.pt --episodes 1 --seed-start 90000 --animation --output evaluations/my_replay
+python -m tools.summarize_results
 ```
 
-Evaluation always creates the original environment: original start at rest, 2 m/s timed path, all 10 ordered waypoints, 0.5 m **3-D** arrival tolerance, 45 s deadline and full wind/payload randomization. It does not use curriculum resets, training cutoff or shaped training reward. Actions are deterministic. Existing seed-70000 test results are historical published evidence; future model selection needs a NEW held-out seed set, not repeated tuning on these results.
+The 50-seed command reproduces **published seeds**, not a new independent test.
+Evaluation retains the original rest start, full wind, 2 m/s timed reference,
+ten ordered 3-D arrivals within 0.5 m and a 45 s deadline. No curriculum resets,
+early-miss cutoff or shaped evaluation reward is used. The plot command rebuilds
+derived files from stored data; it does not train and can overwrite plots.
+Regenerate the manifest only after intentional edits, not to hide corruption.
 
-Outputs include `episodes.csv`, `summary.json`, first-episode raw trajectory/plots and optional actual-PPO GIF. The original PID demonstration can be run with `python -m demo.demo_pid`; it is not PPO evidence. The old `evaluate.py` evaluates 15-input foundation checkpoints, not the mission checkpoint.
+| Historical comparison | Full-task success | Timed 3-D RMSE |
+|---|---:|---:|
+| Selected PPO continuation 7 | 50/50 | 0.829 m |
+| Continuation 8, same foundation | 36/50 | 0.936 m |
+| Direct random-start variant | 0/50 | 2.633 m |
+| Tuned traditional PD/PID | 50/50 | 0.639 m |
 
-## 5. Framework contracts and organization
+The additional seeds 91000-91009 scored **9/10**, with seed 91009 timing out at
+7/10 points; see `verification/quality_review/fresh_10_episodes.csv`.
+Stronger base wind (4.5 m/s): PPO 17/20, tuned classical 20/20. Finite 50/50 is
+not universal 100% success. Budgets/rates differ and continuations share one
+foundation. There is **no demonstrated superiority over tuned PID**, isolated
+observation ablation, real-flight evidence or spray-deposition assessment.
 
-- `environment/`: inherited Oct-30 Gymnasium/PyBullet physics, wind, decreasing payload, timed path, raw reward and strict ordered success. Its source is unchanged.
-- `rl/network.py`: inherited 15-64-64 actor and critic, squashed Gaussian log probability. `rl/ppo.py` supplies GAE; `rl/agent.py`, `rl/rollout.py`, root `train.py` retain the earlier foundation-training workflow.
-- `pure_rl/agent.py`: extends that architecture to actor 23-64-64-4 and critic 23-64-64-1; checkpoint/config/provenance. `task.py`: public mission observation and training-only curriculum/reward/action hold.
-- `pure_rl/collector.py`: eight independent PyBullet clients, batched inference, independent GAE per environment, persistent episode state across rollout boundaries.
-- `pure_rl/learning.py`: PPO clipped policy gradient, on-policy value regression, separate Adam optimizers, gradient checks/clipping, KL early stop and learning-rate decay. No expert-action loss.
-- `pure_rl/train.py`, `evaluate.py`, `plots.py`: full training workflow, validation-only best selection, original-task evaluation and real reward/loss curves.
-- `run_learning_agent.py`, `configs/mission_ppo.json`: compact configured main entry point; `tests/`: inherited and added behavioral/integration checks.
-- `evidence/`: previously measured positive AND negative results; `models/`: two PPO-only checkpoints; `INHERITANCE.json`: source hashes versus Oct-30 submission.
+## 5. Architecture and task advance
 
-Observation: original 15 values + reference-velocity error (3) + next-unvisited-waypoint error (3) + ordered progress (1) + remaining time (1) = **23**. Wind, liquid mass and PID actions are excluded. Public mission inputs resolve a missing-goal/progress problem, but hidden disturbances still make this a partially observed task.
+MLPs suit the compact numerical state/task vector; no image input requires a
+CNN. Two 64-unit Tanh layers are a modest inherited CPU baseline, **not proven
+optimal**.
 
-Actions are normalized thrust deviation, roll command, pitch command and yaw-rate command in [-1,1]. They map to nominal hover thrust +/-60%, roll/pitch +/-25 degrees and yaw rate +/-90 degrees/s. A shared inherited inner PD attitude controller applies body torques; the PPO outer loop does not output individual rotor speeds. "Pure PPO" means **no expert supervision of the outer policy**, not no classical control anywhere in the simulator.
+- Original 15 motion/tracking features + reference-velocity error (3) + next
+  outstanding-goal error (3) + completed fraction (1) + remaining time (1) = 23.
+- Actor: 23-64-64-4 plus four learned state-independent log standard deviations.
+  Training samples a Gaussian latent then applies tanh; evaluation uses tanh(mean).
+- Critic: 23-64-64-1, separate parameters, predicts V(s). Its output is **not an
+  Actor input**; it supports training-time GAE/value regression.
+- The outer action commands thrust deviation, roll, pitch and yaw rate. Shared
+  inherited inner PD applies torques, without providing expert labels.
 
-Training logs separate `training_return` from original `raw_return`. Full-task validation uses the original unscaled return. Finite 45 s mission timeout is terminal in the new trainer, with remaining time observed. Training-only partial resets and early miss termination vanish by the final quarter; skipped prefixes are not counted as earned waypoints. Read `FRAMEWORK_NOTES.md` for the exact reward and reasoning.
+Stage 2 already counted physical ordered arrivals. The advance is **exposing
+completed history and the next outstanding goal**, not adding waypoints or
+relaxing success. A missed goal stays visible after the timed reference moves
+on; the reference/return-to-goal conflict is not completely removed.
 
-## 6. Results and limitations
+## 6. Organization and integrity
 
-The locked teacher-free two-stage seed-7 policy completed 50/50 original-task held-out episodes (RMSE 0.829 m, raw return -4.960). The second continuation seed completed 36/50; both share one foundation. A direct random-start variant completed 0/50. Tuned classical control completed 50/50 with lower RMSE 0.639 m. Thus the framework can learn mission completion, but there is **no demonstrated advantage over tuned PID**, no reliable from-scratch convergence claim, and no coverage/deposition/real-flight proof. Controls and learning budgets differ. Detailed seed-level evidence and unsuccessful trials are included; the report states these limits.
+`environment/`: unchanged simulator; `rl/`: foundation network/workflow;
+`pure_rl/`: current task/collection/PPO/evaluation; `configs/`: main settings;
+`models/`: PPO weights; `evidence/`: original measurements; `results/`: derived
+presentations; `docs/`: current handoff; `report/`: historical milestone report;
+`media/`: supplied video; `verification/`: scoped check records.
+[CODE_GUIDE.md](CODE_GUIDE.md) maps inputs and source locations.
+[CODE_PROVENANCE.md](CODE_PROVENANCE.md) retains method/library/AI disclosures.
 
-The previous separate local imitation-assisted experiment is not the submitted training route. No behavior-cloning/DAgger code, demonstrations or imitation-trained weights are included here. Earlier reports did already disclose direct PyBullet, thrust-deviation actions and a shared inner controller; they did not say that their PPO was trained from expert actions.
+Seven byte-identical historical evidence aliases are stored once; the mapping
+is in `evidence/trial_history/README.md`. No nested source ZIP, cache, local
+environment or transient training directory is included. The manifest describes
+the actual handoff and the group's unchanged checker validates its hashes.
+Release smoke checks are not new policy selection or long training.

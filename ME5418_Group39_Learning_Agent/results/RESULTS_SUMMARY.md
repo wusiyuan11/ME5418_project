@@ -1,6 +1,6 @@
 # Results guide - waypoint-aware PPO framework
 
-These tables and plots use the recorded experiment data; this revision adds comments and clearer presentation, not new long training.
+The tables and plots use recorded experiment data. The presentation revision added comments and clearer figures; it did not include new long training.
 
 ## What changed since the Neural Network submission?
 
@@ -25,7 +25,7 @@ The previous submission only demonstrated 128 transitions and one update. It did
 
 ![Held-out completion and tracking](heldout_comparison.png)
 
-**Interpretation:** the selected two-stage PPO completes all 50 sampled missions, but tuned PID also completes 50/50 and tracks the timed reference more accurately. The two continuation seeds share a foundation, the random-start variant fails, and no causal ablation isolates the new inputs. Unequal budgets/control rates and different episode lengths limit ranking claims. 50/50 Wilson 95% interval is 92.9%-100%.
+**Interpretation:** the selected two-stage PPO completed all 50 sampled missions. Tuned PID also completed 50/50 and tracked the timed reference more accurately. The two continuation seeds share a foundation, the random-start variant failed, and no causal ablation isolates the new inputs. Different budgets, control rates and episode lengths limit ranking claims. The Wilson 95% interval for 50/50 is 92.9%-100%.
 
 ## 2. Learning progress on fixed original-task validation
 
@@ -44,7 +44,7 @@ These are five-seed deterministic full-mission validation scores, not stochastic
 
 ![Training reward definitions shown separately](training_rewards.png)
 
-`training_return` sums the shaped training feedback; `raw_return` sums the inherited unscaled reward. Only original-start attempts are plotted, and early attempts can terminate under the training cutoff. Partial curriculum starts are excluded. Changing episode durations/distributions prevent a simple early-vs-late mean from being a matched performance estimate.
+`training_return` sums shaped training feedback; `raw_return` sums the inherited unscaled reward. The plot includes only original-start attempts and excludes partial curriculum starts. Early attempts can terminate under the training cutoff. Episode durations and distributions change over training, so a simple comparison of early and late means is not a matched performance estimate.
 
 ## 4. Strong-wind check after model selection
 

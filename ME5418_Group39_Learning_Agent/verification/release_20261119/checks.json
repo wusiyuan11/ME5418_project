@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-19",
+  "scope": "Final documentation/packaging regression; no policy tuning",
+  "runtime": {
+    "python": "3.11.5",
+    "platform": "Linux x86-64 CPU",
+    "torch": "2.2.2+cpu",
+    "reportlab": "4.4.4",
+    "charset_normalizer": "3.5.2"
+  },
+  "runtime_method": "Existing pinned Conda runtime plus isolated exact-version document dependencies",
+  "fresh_conda_rebuild": "Attempted; pip failed for disk space; incomplete new prefix removed",
+  "old_named_environment_modified": false,
+  "strict_versions": "PASS; 31 pip declaration entries checked including platform markers",
+  "pip_check": "PASS",
+  "pytest": {
+    "passed": 36,
+    "warnings": 246
+  },
+  "cpu_demo": {
+    "input_dimensions": 23,
+    "parameters": 11721,
+    "transitions": 128,
+    "actor_and_critic_changed": true,
+    "finite_positive_gradient_norms": true
+  },
+  "short_training": {
+    "policy_decisions": 4096,
+    "physical_steps": 8115,
+    "completed_episodes": 141,
+    "tensors_identical_to_previous_verified_smoke": true
+  },
+  "evaluation": {
+    "published_50": {
+      "seeds": [
+        70000,
+        70001,
+        70002,
+        70003,
+        70004,
+        70005,
+        70006,
+        70007,
+        70008,
+        70009,
+        70010,
+        70011,
+        70012,
+        70013,
+        70014,
+        70015,
+        70016,
+        70017,
+        70018,
+        70019,
+        70020,
+        70021,
+        70022,
+        70023,
+        70024,
+        70025,
+        70026,
+        70027,
+        70028,
+        70029,
+        70030,
+        70031,
+        70032,
+        70033,
+        70034,
+        70035,
+        70036,
+        70037,
+        70038,
+        70039,
+        70040,
+        70041,
+        70042,
+        70043,
+        70044,
+        70045,
+        70046,
+        70047,
+        70048,
+        70049
+      ],
+      "successes": 50,
+      "episodes": 50,
+      "mean_timed_3d_rmse_m": 0.8287559717601779,
+      "mean_raw_return": -4.959841076550415,
+      "failed_seeds": [],
+      "scope": "Published-seed reproduction"
+    },
+    "previous_10": {
+      "seeds": [
+        91000,
+        91001,
+        91002,
+        91003,
+        91004,
+        91005,
+        91006,
+        91007,
+        91008,
+        91009
+      ],
+      "successes": 9,
+      "episodes": 10,
+      "mean_timed_3d_rmse_m": 0.831613279379366,
+      "mean_raw_return": -7.088227208147854,
+      "failed_seeds": [
+        91009
+      ],
+      "scope": "Prior additional-check reproduction"
+    },
+    "extra_10": {
+      "seeds": [
+        92000,
+        92001,
+        92002,
+        92003,
+        92004,
+        92005,
+        92006,
+        92007,
+        92008,
+        92009
+      ],
+      "successes": 10,
+      "episodes": 10,
+      "mean_timed_3d_rmse_m": 0.8322296989664274,
+      "mean_raw_return": -5.033497893285393,
+      "failed_seeds": [],
+      "scope": "Additional release regression, not model selection"
+    }
+  },
+  "code_preservation": "45/45 Python files, five fixed config/dependency/model files, video unchanged",
+  "known_limits": [
+    "No newly successful fresh Conda rebuild",
+    "No live-vector-state resume",
+    "Unbounded-observation and Matplotlib/pyparsing warnings retained",
+    "No new PID superiority or universal-success claim"
+  ]
+}

@@ -12,7 +12,7 @@ Read `pure_rl/task.py: mission_observation`. The old environment already counts 
 | 21 | c/N, ordered-arrival fraction | Makes task completion history visible |
 | 22 | Remaining time / 45 s | Distinguishes stages of the finite-deadline mission |
 
-At full-task reset, the start is counted once without reward. Only the next ordered point is eligible for the original 0.5 m 3-D arrival check. The new policy receives a summary of the declared task history; it does not receive hidden wind, liquid mass, a PID action or the Critic's output.
+At full-task reset, the start counts once without reward. Only the next ordered point is eligible for the original 0.5 m 3-D arrival check. The policy receives a summary of task history, but not hidden wind, liquid mass, a PID action or the Critic's output.
 
 Counterfactual example: at C, one vehicle has previously visited B and another missed B. Their original 15 values can be identical, but their required next point is different. `tests/test_mission_progress.py` constructs this input-contract check; it is not a fabricated successful rollout.
 
@@ -20,7 +20,7 @@ Counterfactual example: at C, one vehicle has previously visited B and another m
 
 `pure_rl/task.py: LearningTask._physics_step` keeps the base reward for logging and uses training-only feedback. Arrival bonus uses **new count minus previous count**, not the absolute count or the clock's route progress. Curriculum resets declare skipped prefixes separately; they earn no reset bonus and do not become full-task evaluation evidence. Action holds still check physical arrivals/safety on each 0.05 s step.
 
-Reference generation is NOT changed: it still follows elapsed time. The new inputs expose a missed obligation, rather than eliminating every reference-versus-arrival conflict.
+The reference still follows elapsed time. The new inputs expose a missed obligation but do not remove the conflict between following the reference and returning to a missed point.
 
 ## 3. Separate Actor decisions from Critic training support
 
@@ -28,7 +28,7 @@ Reference generation is NOT changed: it still follows elapsed time. The new inpu
 
 ## 4. Read sampling before the optimizer
 
-`pure_rl/collector.py` preserves unfinished episodes across updates, captures final values before reset, computes GAE down time for each client, then flattens the batch. It separately logs raw/shaped reward, decision/physics counts, declared curriculum prefixes and newly earned arrivals. Comments explain why mixing these would misstate progress.
+`pure_rl/collector.py` preserves unfinished episodes across updates, captures final values before reset, computes GAE over time for each client and then flattens the batch. It logs raw and shaped reward, decision and physics counts, curriculum prefixes and newly earned arrivals separately. Mixing these quantities would misstate progress.
 
 ## 5. Keep evaluation independent
 

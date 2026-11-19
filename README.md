@@ -2,12 +2,24 @@
 
 ME5418 Group 39 - aerial-spraying trajectory tracking under wind and decreasing liquid payload.
 
-## Latest: Learning Agent milestone
+## Latest: final team handoff (19 November 2026)
 
 The current 3-D Gymnasium/PyBullet PPO framework is in
 [`ME5418_Group39_Learning_Agent/`](ME5418_Group39_Learning_Agent/README.md).
 It builds on the group's environment/network milestones and adds sustained
 teacher-free PPO training, checkpointing, reward logs and original-task evaluation.
+
+The final handoff addresses the TA's diagram and environment-reuse feedback.
+All 45 Python files, both models, main JSON and dependency specifications are
+preserved byte-for-byte from the latest group source ZIP. This is a
+documentation/verification release, not new policy tuning.
+
+- [Chinese team handoff](ME5418_Group39_Learning_Agent/START_HERE_组员必读.md)
+- [Current shared technical PDF](ME5418_Group39_Learning_Agent/docs/ME5418_Group39_Technical_Handoff.pdf)
+- [Actor-Critic diagram](ME5418_Group39_Learning_Agent/docs/actor_critic_architecture.png)
+- [Conda migration guide](ME5418_Group39_Learning_Agent/docs/ENVIRONMENT_MIGRATION.md)
+
+The shared PDF is not a substitute for required individual final reports.
 
 The main design advance is exposing **actual ordered-waypoint completion** and the
 **next outstanding goal** to the policy: the original 15 inputs become 23 public
@@ -17,7 +29,7 @@ explicitly discussed.
 
 - [Install, train and evaluate](ME5418_Group39_Learning_Agent/README.md)
 - [Annotated code guide](ME5418_Group39_Learning_Agent/CODE_GUIDE.md)
-- [Shared two-page milestone report](ME5418_Group39_Learning_Agent/report/ME5418_Group39_Learning_Agent_Report.pdf)
+- [Historical two-page milestone report](ME5418_Group39_Learning_Agent/report/ME5418_Group39_Learning_Agent_Report.pdf)
 - [Recorded results and limitations](ME5418_Group39_Learning_Agent/results/RESULTS_SUMMARY.md)
 - [Chinese milestone summary](ME5418_Group39_Learning_Agent/本次提交说明.md)
 
@@ -28,6 +40,10 @@ fixed-route, unequal-budget/control-rate experiments, not evidence that PPO beat
 a strong PID baseline. The experiment data are dated 6 November 2026; this GitHub
 synchronization does not constitute a new training result.
 
+The later 91000-91009 check scored 9/10; that failure is retained. Final-release
+checks reproduce the earlier results and separately record 10/10 on 92000-92009,
+without changing weights or model selection.
+
 ## Earlier prototype (preserved)
 
 [`ME5418_Aerial_Spraying_Project/`](ME5418_Aerial_Spraying_Project/README.md)
@@ -35,6 +51,6 @@ contains the original 2-D point-mass prototype. It uses a different simulator an
 action/observation interface; it has not been overwritten or presented as the
 same environment as the new 3-D learning agent.
 
-此次同步保留旧版，只新增第三次 Learning Agent 内容。相同实验记录集中保存一份，
-未重复上传课程 ZIP、本机复检缓存或临时运行目录。课程提交包与本仓库的完整下载 ZIP
-不是同一份材料；本仓库还包含历史原型。
+此次在原有 Learning Agent 目录更新最终组内交接材料，不新增第二份 Final 代码目录。
+保留最早原型和历史报告；相同实验记录只存一份，不重复上传源代码 ZIP、缓存或
+临时训练目录。组内交接 ZIP 与整个仓库下载 ZIP 不同，后者还包含历史二维原型。

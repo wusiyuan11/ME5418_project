@@ -1,0 +1,7 @@
+# Preserve the release's byte hashes, including on clones with autocrlf enabled.
+* -text
+*.pdf binary
+*.pt binary
+*.png binary
+*.gif binary
+*.mp4 binary

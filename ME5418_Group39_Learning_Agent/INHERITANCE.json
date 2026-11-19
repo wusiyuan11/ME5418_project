@@ -10,8 +10,8 @@
     {
       "path": "demo/demo_network.py",
       "stage2_sha256": "d31ee7e37c3a793e6393892a4b53e5c48748a5ffb204db1436f4bda0068533a0",
-      "submitted_sha256": "d31ee7e37c3a793e6393892a4b53e5c48748a5ffb204db1436f4bda0068533a0",
-      "unchanged": true
+      "submitted_sha256": "bd72cc4499b149db80022d3fbdbdd91038bcc4028210a720b88ec9c19d70c95e",
+      "unchanged": false
     },
     {
       "path": "demo/demo_pid.py",
@@ -100,8 +100,8 @@
     {
       "path": "tests/test_network.py",
       "stage2_sha256": "89fe2e68ba92ffa5c510ec82069fca618803ecb98e531b8feb81f8bed4ecc3b6",
-      "submitted_sha256": "89fe2e68ba92ffa5c510ec82069fca618803ecb98e531b8feb81f8bed4ecc3b6",
-      "unchanged": true
+      "submitted_sha256": "aaaff38ba8e3352fbe5b6eebd56208e94665bbc3095e5eb2687a627aa74024d0",
+      "unchanged": false
     },
     {
       "path": "tests/test_reward.py",

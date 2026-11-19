@@ -1,0 +1,90 @@
+{
+  "seed": 7,
+  "device": "cpu",
+  "network": "mission_actor_critic_23d",
+  "observation_dimensions": 23,
+  "parameters": 11721,
+  "input_observation": [
+    0.020015275105834007,
+    0.06355420500040054,
+    2.04410982131958,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.020015275105834007,
+    -0.06355420500040054,
+    -0.044109709560871124,
+    2.0,
+    0.0,
+    0.0,
+    11.979984283447266,
+    -0.06355420500040054,
+    -0.04410982131958008,
+    0.10000000149011612,
+    1.0
+  ],
+  "latent_mean": [
+    -0.0022616058122366667,
+    0.0017742199124768376,
+    0.0003307531587779522,
+    -0.0004389266250655055
+  ],
+  "latent_std": [
+    0.3678794503211975,
+    0.3678794503211975,
+    0.3678794503211975,
+    0.16529889404773712
+  ],
+  "deterministic_action": [
+    -0.0022616018541157246,
+    0.0017742180498316884,
+    0.0003307531587779522,
+    -0.00043892659596167505
+  ],
+  "value": -0.01912897825241089,
+  "updates": [
+    {
+      "policy_loss": 0.0021916087716817856,
+      "value_loss": 12.097248554229736,
+      "approx_kl": 0.0004980247467756271,
+      "clip_fraction": 0.0,
+      "policy_optimizer_steps": 2,
+      "value_optimizer_steps": 2,
+      "kl_early_stop": false,
+      "latent_std_mean": 0.3172660171985626,
+      "actor_learning_rate": 0.0003,
+      "transitions": 128,
+      "episode_end_reasons": [
+        {
+          "total_timesteps": 101,
+          "env_index": 0,
+          "training_return": -12.251197978621349,
+          "raw_return": -126.40440926045488,
+          "length": 101,
+          "physics_length": 101,
+          "total_physics_timesteps": 101,
+          "tracking_rmse_m": 5.485024624613259,
+          "waypoints_achieved": 1,
+          "waypoints_earned": 0,
+          "reset_reference_time": 0.0,
+          "original_start": true,
+          "subtask_success": false,
+          "full_task_success": false,
+          "wind_limit": 3.0,
+          "reason": "boundary_violation"
+        }
+      ],
+      "actor_gradient_norm": 0.49999985098838806,
+      "critic_gradient_norm": 0.5,
+      "max_parameter_change": 0.0020008385181427,
+      "actor_changed": true,
+      "critic_changed": true
+    }
+  ]
+}

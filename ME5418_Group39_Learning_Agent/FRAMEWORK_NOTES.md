@@ -6,7 +6,7 @@ The second submission already tracked the count of ordered arrivals in the envir
 
 This revision adds explanatory comments/docstrings and three observation/architecture regressions, for 36 total tests. Executable training syntax, task settings, weights and experiment data are unchanged from the previous verified build. The report now emphasizes the before/after design and separates full-task completion, ordered arrivals, timed-reference RMSE and original evaluation reward. Clear tables/figures are under `results/`; `CODE_GUIDE.md` maps features to source.
 
-The information deficiency is addressed, but the reference remains time-driven, and hidden disturbances remain unobserved. Training success is evidence about the combined PPO-only system, not proof that the new inputs alone caused the gain. No new long training was performed for this presentation/comment revision.
+The new features expose missing task information, but the reference remains time-driven and hidden disturbances remain unobserved. The successful run is evidence about the combined PPO-only system; it does not prove that the new inputs alone caused the gain. No new long training was performed for this presentation/comment revision.
 
 ## What the previous submitted report actually says
 
@@ -14,7 +14,7 @@ The Oct-30 Neural Network report describes custom PPO/GAE, fixed physical input 
 
 It already discloses deviations from the proposal: direct PyBullet instead of gym-pybullet-drones; a 12 x 8 m rather than illustrative 20 x 20 m field; normalized hover-thrust deviation rather than direct total-thrust input; corrected actual ordered-arrival rewards. It also identifies the missing-next-waypoint/progress issue and suggests adding mission inputs as a future extension. These are implementation choices within RL, not evidence of imitation-assisted PPO. We cannot determine an individual's authorship from a group report.
 
-A separate later local experiment DID use imitation/DAgger plus PPO. It is not that Oct-30 submission and is not this submission's main route. It must not be relabelled as pure PPO.
+A separate later local experiment used imitation/DAgger plus PPO. It was neither the Oct-30 submission nor the training route for the supplied mission model, and should not be labelled pure PPO.
 
 ## What is new in the third milestone
 
@@ -48,7 +48,7 @@ PPO defaults: 8 clients x 256 decisions per rollout = 2048 transitions; minibatc
 
 The older policy could reduce timed-reference RMSE yet miss an ordered turn: the clock kept moving while its required waypoint stayed behind. Making the outstanding goal observable and rewarding actual completion makes the objective more explainable. Action hold makes exploration temporally correlated at a 10 Hz outer loop while physics/inner control remain at 20 Hz. Curriculum and PPO-only staging improve access to difficult turns without supplying a correct action.
 
-These are testable hypotheses, not guaranteed improvements. Early observation-only/weak-reward/curriculum trials failed; a later combined configuration succeeded. We have not causally isolated each component. The published seed-7 main model completed 50/50 held-out episodes, but a second continuation seed scored 36/50, direct random initialization scored 0/50, and stronger classical control had better tracking. The two positive continuation branches share the same foundation and are NOT two independent end-to-end training seeds.
+These are hypotheses, not guaranteed improvements. Early observation-only, weak-reward and curriculum trials failed; a later combined configuration succeeded. The contribution of each component has not been isolated. The seed-7 main model completed 50/50 held-out episodes, a second continuation scored 36/50, direct random initialization scored 0/50, and tuned classical control tracked more accurately. The two successful continuation branches share a foundation and are not independent end-to-end training seeds.
 
 ## Next steps for the final project
 

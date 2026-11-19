@@ -37,6 +37,11 @@ def test_gae_terminal_truncation_and_reset():
 def test_forward_backward_real_environment(tmp_path):
     stats = run(steps=32, output=str(tmp_path/'demo.json'))
     update = stats['updates'][0]
+    assert stats['device'] == 'cpu'
+    assert stats['network'] == 'mission_actor_critic_23d'
+    assert stats['observation_dimensions'] == 23
+    assert update['actor_gradient_norm'] > 0
+    assert update['critic_gradient_norm'] > 0
     assert update['actor_changed'] and update['critic_changed']
     assert update['max_parameter_change'] > 0
     assert (tmp_path/'demo.pt').stat().st_size > 1000

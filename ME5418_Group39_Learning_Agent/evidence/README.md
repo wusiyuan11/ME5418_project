@@ -1,8 +1,12 @@
 # Previously measured experiment evidence
 
-These are actual pre-packaging research records, not new training performed while preparing this submission. The compact code package preserves the main trainer and two useful checkpoints; the separate full Pure_PPO research archive retains all candidate weights and raw trajectories. Historical JSON paths refer to that original archive and are provenance, not portable command arguments. Included checkpoint hashes are recorded in `models/README.md`.
+Seven byte-identical aliases from the incoming ZIP remain stored once.
+`trial_history/README.md` maps the five repeated main/reproduction records to
+`selected_run/`; two historical `selection_used.json` copies map to
+`validation_selection.json`. Unique data are retained without numeric edits.
+November 19 regressions are separate in `../verification/release_20261119/`.
 
-For GitHub, byte-identical repeated evidence is stored once. `validation_selection.json` is the common pre-test model lock used by both held-out and strong-wind assessments. The main seed-7 trial's config/summary/validation and the repeated run's identical config/validation are in `selected_run/`; see `trial_history/README.md` for the complete alias map. Unique trial summaries and all held-out episode rows remain present. The duplicate per-assessment `selection_used.json` files are intentionally not repeated.
+These research records predate packaging. This source archive includes the main trainer and two checkpoints; the separate full Pure_PPO research archive retains the candidate weights and raw trajectories. Paths in historical JSON files identify that original archive and are not portable command arguments. Checkpoint hashes are in `models/README.md`.
 
 - `selected_run/`: original main config, episode/update/validation CSVs, summary and reward/loss curves. `training_return` and `raw_return` have different definitions and must not be mixed.
 - `trial_history/`: nine original configuration histories, including negative trials and both continuation seeds. These are combined design explorations, not nine RL algorithms or a controlled causal ablation.
